@@ -1,6 +1,7 @@
 package com.suleimanazhari.openweather
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
+import com.suleimanazhari.openweather.data.InternetAvailabilityInterceptor
 import com.suleimanazhari.openweather.data.WeatherResponse
 import kotlinx.coroutines.Deferred
 import okhttp3.Interceptor
@@ -25,6 +26,7 @@ interface WeatherService {
 
     companion object {
         operator fun invoke(
+                internetAvailabilityInterceptor: InternetAvailabilityInterceptor
         ): WeatherService {
 
             // Interceptor to inject API key in each request
@@ -47,6 +49,7 @@ interface WeatherService {
             // Add requestInterceptor (API Key injector)
             val okHttpClient = OkHttpClient.Builder()
                     .addInterceptor(requestInterceptor)
+                    .addInterceptor(internetAvailabilityInterceptor)
                     .addInterceptor(HttpLoggingInterceptor().apply {
                         level = if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY
                         else HttpLoggingInterceptor.Level.NONE

@@ -1,5 +1,6 @@
 package com.suleimanazhari.openweather.data
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.suleimanazhari.openweather.WeatherService
@@ -13,10 +14,13 @@ class NetworkDataSourceImpl(
         get() = mutableDownloadedWeather
 
     override suspend fun fetchWeather(location: String) {
-        val fetchedWeather = weatherService
-                .getWeather(location).await()
+        try {
+            val fetchedWeather = weatherService
+                    .getWeather(location).await()
 
-        mutableDownloadedWeather.postValue(fetchedWeather)
-
+            mutableDownloadedWeather.postValue(fetchedWeather)
+        } catch (e: NoInternetException) {
+            Log.d("Network", "No Internet!")
+        }
     }
 }
