@@ -3,6 +3,8 @@ package com.suleimanazhari.openweather
 import androidx.appcompat.app.AppCompatActivity
 
 import android.os.Bundle
+import androidx.lifecycle.Observer
+import com.suleimanazhari.openweather.data.NetworkDataSourceImpl
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -15,10 +17,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 //        val apiService = WeatherService()
+//        val networkDataSource = NetworkDataSourceImpl(apiService)
+//
+//        networkDataSource.downloadedWeather.observe(this, Observer {
+//            textView_temperature.text = it.main.temp.toString()
+//        })
 //
 //        GlobalScope.launch(Dispatchers.Main) {
-//            val response = apiService.getWeather("cyberjaya").await()
-//            textView_temperature.text = response.main.temp.toString()
+//            networkDataSource.fetchWeather("cyberjaya")
 //        }
     }
 }
