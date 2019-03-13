@@ -4,6 +4,8 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.suleimanazhari.openweather.WeatherService
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 class NetworkDataSourceImpl(
         private val weatherService: WeatherService
@@ -12,6 +14,13 @@ class NetworkDataSourceImpl(
     private val mutableDownloadedWeather = MutableLiveData<WeatherResponse>()
     override val downloadedWeather: LiveData<WeatherResponse>
         get() = mutableDownloadedWeather
+
+    override suspend fun getWeather(location: String): LiveData<WeatherResponse> {
+        return withContext(Dispatchers.IO) {
+            fetchWeather(location)
+            return@withContext downloadedWeather
+        }
+    }
 
     override suspend fun fetchWeather(location: String) {
         try {

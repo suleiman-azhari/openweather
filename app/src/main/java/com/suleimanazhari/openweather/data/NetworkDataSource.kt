@@ -8,4 +8,8 @@ interface NetworkDataSource {
     suspend fun fetchWeather(
             location: String
     )
+
+    suspend fun getWeather(
+            location: String
+    ): LiveData<WeatherResponse>
 }
