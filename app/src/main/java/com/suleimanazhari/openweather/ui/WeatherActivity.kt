@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.suleimanazhari.openweather.R
 import com.suleimanazhari.openweather.WeatherService
 import com.suleimanazhari.openweather.data.InternetAvailabilityInterceptorImpl
+import com.suleimanazhari.openweather.data.NetworkDataSource
 import com.suleimanazhari.openweather.data.NetworkDataSourceImpl
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.*
@@ -20,14 +21,18 @@ class WeatherActivity : AppCompatActivity(), CoroutineScope {
     private lateinit var job: Job
     private lateinit var viewModel: WeatherViewModel
 
+    // TODO DI with Dagger2
+    private lateinit var apiService: WeatherService
+    private lateinit var networkDataSource: NetworkDataSource
+    private lateinit var weatherViewModelFactory: WeatherViewModelFactory
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // TODO DI with Dagger2
-        val apiService = WeatherService(InternetAvailabilityInterceptorImpl(this))
-        val networkDataSource = NetworkDataSourceImpl(apiService)
-        val weatherViewModelFactory = WeatherViewModelFactory(networkDataSource)
+        apiService = WeatherService(InternetAvailabilityInterceptorImpl(this))
+        networkDataSource = NetworkDataSourceImpl(apiService)
+        weatherViewModelFactory = WeatherViewModelFactory(networkDataSource)
 
         job = Job()
 
@@ -67,12 +72,12 @@ class WeatherActivity : AppCompatActivity(), CoroutineScope {
 
     @SuppressLint("SetTextI18n")
     private fun showMinTemp(temp: Double) {
-        textView_temp_min.text = "Minimum Temperature: $temp°C"
+        textView_temp_min.text = "Min Temp: $temp°C"
     }
 
     @SuppressLint("SetTextI18n")
     private fun showMaxTemp(temp: Double) {
-        textView_temp_max.text = "Maximum Temperature: $temp°C"
+        textView_temp_max.text = "Max Temp: $temp°C"
     }
 
     private fun showIcon(code: String) {
