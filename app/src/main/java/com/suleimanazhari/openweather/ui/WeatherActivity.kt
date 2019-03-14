@@ -71,7 +71,7 @@ class WeatherActivity : AppCompatActivity(), CoroutineScope {
 
     @SuppressLint("SetTextI18n")
     private fun showMaxTemp(temp: Double) {
-        textView_temp_max.text = "Minimum Temperature: $temp°C"
+        textView_temp_max.text = "Maximum Temperature: $temp°C"
     }
 
     override val coroutineContext: CoroutineContext
