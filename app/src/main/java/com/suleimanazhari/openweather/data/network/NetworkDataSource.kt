@@ -6,10 +6,6 @@ import com.suleimanazhari.openweather.data.model.WeatherResponse
 interface NetworkDataSource {
     val downloadedWeather: LiveData<WeatherResponse>
 
-//    suspend fun fetchWeather(
-//            location: String
-//    )
-
     suspend fun getWeather(
             location: String
     ): LiveData<WeatherResponse>
