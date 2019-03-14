@@ -48,6 +48,7 @@ class WeatherActivity : AppCompatActivity(), CoroutineScope {
             showDesc(it.weather[0].description)
             showMinTemp(it.main.tempMin)
             showMaxTemp(it.main.tempMax)
+            showIcon(it.weather[0].icon)
         })
     }
 
@@ -72,6 +73,12 @@ class WeatherActivity : AppCompatActivity(), CoroutineScope {
     @SuppressLint("SetTextI18n")
     private fun showMaxTemp(temp: Double) {
         textView_temp_max.text = "Maximum Temperature: $temp°C"
+    }
+
+    private fun showIcon(code: String) {
+        GlideApp.with(this@WeatherActivity)
+                .load("http://openweathermap.org/img/w/$code.png")
+                .into(imageView_icon)
     }
 
     override val coroutineContext: CoroutineContext
