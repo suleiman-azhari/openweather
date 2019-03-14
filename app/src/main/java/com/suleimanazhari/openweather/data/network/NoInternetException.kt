@@ -1,4 +1,4 @@
-package com.suleimanazhari.openweather.data
+package com.suleimanazhari.openweather.data.network
 
 import java.io.IOException
 

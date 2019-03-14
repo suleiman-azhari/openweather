@@ -1,4 +1,4 @@
-package com.suleimanazhari.openweather.data
+package com.suleimanazhari.openweather.data.model
 
 data class Weather(
         val description: String,

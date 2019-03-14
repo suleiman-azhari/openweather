@@ -1,8 +1,8 @@
-package com.suleimanazhari.openweather
+package com.suleimanazhari.openweather.data.network
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import com.suleimanazhari.openweather.data.InternetAvailabilityInterceptor
-import com.suleimanazhari.openweather.data.WeatherResponse
+import com.suleimanazhari.openweather.BuildConfig
+import com.suleimanazhari.openweather.data.model.WeatherResponse
 import kotlinx.coroutines.Deferred
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient

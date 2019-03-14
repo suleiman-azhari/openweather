@@ -1,4 +1,4 @@
-package com.suleimanazhari.openweather.data
+package com.suleimanazhari.openweather.data.model
 
 data class WeatherResponse(
         val id: Int,

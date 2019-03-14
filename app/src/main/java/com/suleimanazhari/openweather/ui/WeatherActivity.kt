@@ -8,10 +8,10 @@ import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.suleimanazhari.openweather.R
-import com.suleimanazhari.openweather.WeatherService
-import com.suleimanazhari.openweather.data.InternetAvailabilityInterceptorImpl
-import com.suleimanazhari.openweather.data.NetworkDataSource
-import com.suleimanazhari.openweather.data.NetworkDataSourceImpl
+import com.suleimanazhari.openweather.data.network.WeatherService
+import com.suleimanazhari.openweather.data.network.InternetAvailabilityInterceptorImpl
+import com.suleimanazhari.openweather.data.network.NetworkDataSource
+import com.suleimanazhari.openweather.data.network.NetworkDataSourceImpl
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext

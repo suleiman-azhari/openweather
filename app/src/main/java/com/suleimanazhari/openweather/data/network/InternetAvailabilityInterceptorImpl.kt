@@ -1,4 +1,4 @@
-package com.suleimanazhari.openweather.data
+package com.suleimanazhari.openweather.data.network
 
 import android.content.Context
 import android.net.ConnectivityManager

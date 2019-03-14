@@ -1,13 +1,14 @@
-package com.suleimanazhari.openweather.data
+package com.suleimanazhari.openweather.data.network
 
 import androidx.lifecycle.LiveData
+import com.suleimanazhari.openweather.data.model.WeatherResponse
 
 interface NetworkDataSource {
     val downloadedWeather: LiveData<WeatherResponse>
 
-    suspend fun fetchWeather(
-            location: String
-    )
+//    suspend fun fetchWeather(
+//            location: String
+//    )
 
     suspend fun getWeather(
             location: String

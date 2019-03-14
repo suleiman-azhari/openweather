@@ -1,9 +1,9 @@
-package com.suleimanazhari.openweather.data
+package com.suleimanazhari.openweather.data.network
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.suleimanazhari.openweather.WeatherService
+import com.suleimanazhari.openweather.data.model.WeatherResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -22,7 +22,7 @@ class NetworkDataSourceImpl(
         }
     }
 
-    override suspend fun fetchWeather(location: String) {
+    private suspend fun fetchWeather(location: String) {
         try {
             val fetchedWeather = weatherService
                     .getWeather(location).await()
